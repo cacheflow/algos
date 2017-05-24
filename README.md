@@ -1,4 +1,4 @@
-![Yaass](https://67.media.tumblr.com/90e05030de10beaae8694c318d430082/tumblr_ndhv9ueHDU1ql5yr7o1_500.gif)
+![Yaass](https://media.giphy.com/media/7eAvzJ0SBBzHy/giphy.gif?response_id=5924eb4aa2fb6603eaef9076)
 
 #Algos
 A repo to study algorithms.
