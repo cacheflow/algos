@@ -1,143 +1,248 @@
 'use strict'
 
-class Node {
-  constructor(data) {
-    this.data = data;
-    this.next = null;
+class DoublyNode {
+  constructor(value) {
+    this.data = value;
+    this.previous = null
+    this.next = null
   }
 }
 
-class SinglyList {
+class SinglyNode {
+  constructor(value) {
+    this.data = value;
+    this.next = null
+  }
+}
+
+class SinglyLinkedList {
   constructor() {
-    this.head = null;
-    this._length = 0;
+    this.head = null
+    this.length = 0
   }
 
-  add(value) {
-    let newNode = new Node(value)
+  add(data) {
     let currentNode = this.head
+    let newNode = new Node(data)
 
-    if(!currentNode) {
+    if(currentNode == null)  {
       this.head = newNode
-      ++this._length
-      return newNode
     }
     else {
       while(currentNode.next) {
         currentNode = currentNode.next
       }
       currentNode.next = newNode
-      ++this._length
-      return newNode
-    }
-  }
 
-  searchNodeAt(position) {
-    let currentNode = this.head
-    let index = 0;
-    let length = this._length;
-    if(position < 0 || position > length) {
-      throw new Error("Invalid position provided.")
     }
-    else {
-      while(index < position) {
-        currentNode = currentNode.next
-        index++
-      }
-      return currentNode
-    }
-  }
-
-  getLenth() {
-    return this._length
-  }
-
-  remove(data) {
-    let currentNode = this.head
-    let deletedNode;
-    let previousNode;
-
-    if(currentNode.data == data) {
-      this.head = currentNode.next
-      deletedNode = currentNode
-      --this._length
-      return deleteNode
-    }
-    else {
-      while(currentNode.data != data) {
-        previousNode = currentNode;
-        currentNode = currentNode.next
-      }
-      previousNode.next = currentNode.next
-      deletedNode = currentNode
-      --this._length
-      return this.head
-    }
+    ++this.length
+    return newNode
   }
 
   removeAt(position) {
     let currentNode = this.head
-    let previousNode;
-    let index = 0;
-    let length = this._length;
-    let deletedNode;
-
-    if(position < 0 || position > length) {
-      throw new Error("wrong position provided")
-    }
-    if (position == 0) {
+    let count = 0
+    if(position == 0) {
       this.head = currentNode.next
-      deletedNode = currentNode
-      ++this._length
     }
     else {
-      while(index <= position) {
+      while(count < position) {
         previousNode = currentNode
         currentNode = currentNode.next
-        index++
+        count++
       }
-      console.log(currentNode)
       previousNode.next = currentNode.next
-      deletedNode = currentNode
-      --this._length
-      return this.head
+      --this.length
     }
   }
 
-  addAt(index, element) {
-    let node = new Node(element)
-    let currentNode = this.head;
+  addAt(position, data) {
+    let currentNode = this.head
+    let newNode = new Node(data)
     let previousNode;
 
-    let currentIndex = 0;
-
-    if(index > this._length) {
-      return false;
-    }
-    if(index == 0) {
-      //reassign ahead to the next one after our newly added node.
-      node.next = currentNode
-      this.head = node
+    if(position == 0) {
+      newNode.next = currentNode
+      this.head = newNode
     }
     else {
-      while(currentIndex < index) {
-        previousNode = currentNode;
+      while(currentNode.next) {
+        previousNode = currentNode
         currentNode = currentNode.next
-        currentIndex++
       }
-      node.next = currentNode
-      previousNode.next = node
+      previousNode.next = newNode
+      newNode.next = currentNode
     }
-    ++this._length
-    let curretNode = this.head
   }
 }
 
 
-let s = new SinglyList()
 
-s.add("a")
-s.add("b")
-s.add("c")
-s.add("d")
-console.log(s.removeAt(3))
+class DoublyLinkedList {
+  constructor() {
+    this.length = 0
+    this.head = null
+    this.tail = null
+  }
+
+  add(data) {
+    let tail = this.tail
+    let head = this.head
+    let length = this.legnth
+    let newNode = new DoublyNode(data)
+
+    if(this.length) {
+        this.tail.next = newNode
+        newNode.previous = this.tail
+        this.tail = newNode
+    }
+    else {
+      this.head = newNode
+      this.tail = newNode
+    }
+    ++this.length
+  }
+
+  remove(data) {
+    let currentNode = this.head
+    let tail = this.tail
+    let head = this.head
+    if(data == this.head.data) {
+      this.head = this.head.next
+      this.head.previous = null
+    }
+    if(data == this.tail.data) {
+      this.tail = this.tail.previous
+      this.tail.next = null
+    }
+    while(currentNode.data != data) {
+      currentNode = head.next
+      currentNode.previous.next = currentNode.next
+      currentNode.next.previous = currentNode.previous
+    }
+    --this.length
+  }
+
+  searchNodeAt(position) {
+    let currentNode = this.head
+    let length = this.length
+    let count = 0;
+    let foundNode;
+    if(position < 0 || position > length) {
+      throw new Error('Passed invalid position.')
+    }
+    if(length == 0) {
+      throw new Error("No nodes in list to search for.")
+    }
+    if(position == 0) {
+      return this.head
+    }
+    while(count < position) {
+      currentNode = currentNode.next
+      count++
+    }
+    return currentNode
+  }
+
+  addAt(position, data) {
+    let tail = this.tail;
+    let head = this.head;
+    let currentNode = this.head;
+    let newNode = new DoublyNode(data)
+    let previousNode;
+    let count = 0
+    if(position == 0) {
+      this.head.previous = newNode
+      newNode.next = this.head
+      this.head = newNode
+    }
+    else {
+      while(count < position) {
+        currentNode = currentNode.next
+        count++
+      }
+      if(currentNode == this.tail) {
+        this.tail.next = newNode
+        newNode.previous = this.tail
+        this.tail = newNode
+      }
+      else {
+        currentNode.previous.next = newNode
+        currentNode.next.previous = newNode
+        newNode.previous = currentNode.previous
+        newNode.next = currentNode
+        currentNode.previous = newNode
+      }
+    }
+    ++this.length
+  }
+
+  removeAt(position) {
+    let tail = this.tail;
+    let head = this.head
+    let currentNode = this.head
+    let count = 0;
+    let length = this.length;
+    let previousNode;
+
+    if(length) {
+      if(position > length || position < 0){
+        throw new Error('You did not pass a valid position.')
+      }
+      if(position == 0) {
+          this.head = currentNode.next
+          this.head.previous = null
+      }
+      else {
+        while(count < position) {
+          previousNode = currentNode
+          currentNode = currentNode.next
+          count+=1
+        }
+        if(previousNode == tail) {
+          this.tail = previousNode.previous
+          this.tail.next = null
+        }
+        if(currentNode == null) {
+          throw new Error("Did not find a node at that position.")
+        }
+        else {
+          currentNode.previous.next = currentNode.next
+          currentNode.next.previous = currentNode.previous
+        }
+      }
+      --this.length
+    }
+  }
+}
+
+
+class CirculrSinglyLinkedList {
+  constructor() {
+    this.length = 0;
+    this.head = null
+  }
+
+  add(data) {
+    let currentNode = this.head
+    let newNode = new SinglyNode(data)
+    let count = 0;
+    let length = this.length
+
+    if(!currentNode) {
+      this.head = newNode
+      this.head.next = newNode
+    }
+    else {
+      while(count < length) {
+        currentNode = currentNode.next
+        count++
+      }
+      if(count == length) {
+        currentNode.next = newNode
+        newNode.next = this.head
+      }
+    }
+    ++this.length
+  }
+}

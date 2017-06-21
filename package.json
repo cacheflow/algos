@@ -1,0 +1,20 @@
+{
+  "name": "study",
+  "version": "1.0.0",
+  "description": "![Yaass](https://media.giphy.com/media/7eAvzJ0SBBzHy/giphy.gif?response_id=5924eb4aa2fb6603eaef9076)",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cacheflow/algos.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cacheflow/algos/issues"
+  },
+  "homepage": "https://github.com/cacheflow/algos#readme",
+  "dependencies": {}
+}
