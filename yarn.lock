@@ -2,6 +2,3 @@
 # yarn lockfile v1
 
 
-doubly-linked-list-js@^0.1.8:
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/doubly-linked-list-js/-/doubly-linked-list-js-0.1.8.tgz#7bc410340ada07fb644ce7ce37e3fd077c4cfeab"
