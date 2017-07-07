@@ -13,4 +13,4 @@ var twoSum = function(nums, target) {
   return result
 }
 
-twoSum([3,2,4, 3, 5], 6)
+twoSum([3, 2, 3, 1, 5], 6)
