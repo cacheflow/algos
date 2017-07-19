@@ -1,27 +1,31 @@
 var isAnagram = function(s, t) {
-  let anagram = true
+  var obj = {}
+  var wordIsAnagram = true 
   if(s.length != t.length) {
-    return false
+    wordIsAnagram = false 
+    return wordIsAnagram
   }
-  let obj = {}
-  let sArr = s.split("")
-  let tArr = t.split("")
-  for(let i = 0; i < sArr.length; i++) {
-    if(obj.hasOwnProperty(sArr[i])) {
-      obj[sArr[i]]++
+  for(var i = 0; i < s.length; i++) {
+    if(obj.hasOwnProperty(s.charAt(i))) {
+      obj[s.charAt(i)]++
     }
     else {
-      obj[sArr[i]] = 1
+      obj[s.charAt(i)] = 1
     }
   }
-  for(let i = 0; i < tArr.length; i++) {
-    obj[tArr[i]]-=1
-    if(obj[tArr[i]] < 0 || obj[tArr[i]] == NaN) {
-      anagram = false
+  for(var i = 0; i < t.length; i++) {
+    if(obj.hasOwnProperty(t.charAt(i))) {
+      obj[t.charAt(i)]--
+    }
+    if(obj[t.charAt(i)] < 0) {
+      wordIsAnagram = false 
+    }
+    if(!obj.hasOwnProperty(t.charAt(i))) {
+      wordIsAnagram = false 
     }
   }
-  return anagram
+  return wordIsAnagram
 };
 
 
-console.log(isAnagram("a", "b"))
+console.log(isAnagram("aacc", "ccac"))
