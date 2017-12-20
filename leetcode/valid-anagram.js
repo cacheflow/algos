@@ -28,4 +28,3 @@ var isAnagram = function(s, t) {
 };
 
 
-console.log(isAnagram("aacc", "ccac"))

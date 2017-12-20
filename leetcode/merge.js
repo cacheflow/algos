@@ -10,4 +10,4 @@ var merge = function(nums1, m, nums2, n) {
   }
 };
 
-console.log(merge([2,0], 1, [1], 1))
+merge([2,0], 1, [1], 1)

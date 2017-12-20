@@ -17,11 +17,10 @@ var lengthOfLongestSubstring = function(s) {
     lookup.set(char, i)
     max = Math.max(max, i - start + 1)
     // console.log("max is ", max)
-    console.log("start is now ", start - i + 1)
 
    }
    return max 
 };
 
 
-console.log(lengthOfLongestSubstring("pwwwkew"))
+lengthOfLongestSubstring("pwwwkew")

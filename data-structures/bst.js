@@ -73,4 +73,3 @@ class Bst {
 
 let b = new Bst("wow")
 
-console.log(b)

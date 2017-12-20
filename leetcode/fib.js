@@ -24,4 +24,4 @@ let fib = (number, memo) => {
 }
 
 
-console.log(fib(7))
+fib(7)

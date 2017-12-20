@@ -8,7 +8,6 @@ var lengthOfLongestSubstring = function(s) {
    		obj[s.charAt(i)] = 1	
    	}
    }
-   console.log(obj)
 };
 
 

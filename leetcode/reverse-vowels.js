@@ -10,11 +10,9 @@ var reverseVowels = function(s) {
     if(currentLetter == 'a' || currentLetter == 'e' || currentLetter == 'i' || currentLetter == 'o' || currentLetter == 'u') {
       if(i > firstIndex) {
         firstIndex = i
-        console.log(i)
       }
     }
   }
-  console.log(s)
 };
 
 reverseVowels('hello')

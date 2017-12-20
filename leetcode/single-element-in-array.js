@@ -12,4 +12,4 @@ var singleNonDuplicate = function(nums) {
   }
 };
 
-console.log(singleNonDuplicate([1, 1, 2]))
+singleNonDuplicate([1, 1, 2])

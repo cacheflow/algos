@@ -5,7 +5,6 @@ var makeAnagram = function(s) {
     var obj = {}
     var count = 0
     for(var i = 0; i < s.length / 2; i++) {
-     console.log("i is ", i)
      if(obj.hasOwnProperty(s.charAt(i))) {
         obj[s.charAt(i)]++
       }
@@ -26,7 +25,6 @@ var makeAnagram = function(s) {
     return count
 }
 
-console.log(makeAnagram("aaabbb"))
 makeAnagram("ab")
 makeAnagram("abc")
 makeAnagram("mnop")

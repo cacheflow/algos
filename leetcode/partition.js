@@ -6,7 +6,6 @@ let arrayPairSum = (nums) => {
     let next = i++
     sum += Math.min(nums[i], nums[next])
   }
-  console.log(sum)
   return sum
 }
 

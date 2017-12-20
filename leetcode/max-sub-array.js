@@ -6,7 +6,6 @@ var maxSubArray = function(nums) {
       currMax = Math.max(currMax, globalMax + nums[i])
       globalMax = Math.max(0, globalMax + nums[i])
     }
-    console.log(nums)
     return currMax
 };
 

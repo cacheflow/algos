@@ -25,4 +25,4 @@ var majorityElement = function(nums) {
 	}
 }
 
-console.log(majorityElement([3,3,4]))
+majorityElement([3,3,4])
