@@ -3,6 +3,7 @@ var twoSum = function(nums, target) {
   var obj = {}
   for(var i = 0; i < nums.length; i++) {
     if(obj.hasOwnProperty(nums[i])) {
+      console.log(nums[i])
       result[0] = obj[nums[i]]
       result[1] = i
     }

@@ -17,15 +17,15 @@ class SinglyNode {
 
 class SinglyLinkedList {
   constructor() {
-    this.head = null
-    this.length = 0
+    this.length = 0;
+    this.head = null;
   }
 
   add(data) {
-    let currentNode = this.head
-    let newNode = new Node(data)
+    let currentNode = this.head;
+    let newNode = new SinglyNode(data)
 
-    if(currentNode == null)  {
+    if(!currentNode) {
       this.head = newNode
     }
     else {
@@ -33,46 +33,42 @@ class SinglyLinkedList {
         currentNode = currentNode.next
       }
       currentNode.next = newNode
-
     }
     ++this.length
-    return newNode
   }
 
-  removeAt(position) {
+  search(position) {
+    let length = this.length
+    let counter = 0;
     let currentNode = this.head
-    let count = 0
-    if(position == 0) {
+    if(position > length || position < length) {
+      throw new Error("Invalid position passed.")
+    }
+    else {
+      while(counter < position) {
+        currentNode = currentNode.next
+        counter++
+      }
+    }
+    return currentNode
+  }
+
+  remove(data) {
+    let length = this.length
+    let counter = 0;
+    let currentNode = this.head
+    let previousNode;
+    if(currentNode.data == data) {
       this.head = currentNode.next
     }
     else {
-      while(count < position) {
+      while(currentNode.data != data) {
         previousNode = currentNode
         currentNode = currentNode.next
-        count++
       }
       previousNode.next = currentNode.next
-      --this.length
     }
-  }
-
-  addAt(position, data) {
-    let currentNode = this.head
-    let newNode = new Node(data)
-    let previousNode;
-
-    if(position == 0) {
-      newNode.next = currentNode
-      this.head = newNode
-    }
-    else {
-      while(currentNode.next) {
-        previousNode = currentNode
-        currentNode = currentNode.next
-      }
-      previousNode.next = newNode
-      newNode.next = currentNode
-    }
+    return this.head
   }
 }
 
@@ -503,11 +499,19 @@ class CircularDoublyLinkedList {
 }
 
 
-let s = new CircularDoublyLinkedList()
+let s = new SinglyLinkedList()
 
+s.add("1")
 s.add("2")
-s.add("4")
-s.add("5")
-s.add("7")
+s.add("3")
 
-s.searchNodeAt("3")
+console.log(s.remove('2'))
+
+// let s = new CircularDoublyLinkedList()
+//
+// s.add("2")
+// s.add("4")
+// s.add("5")
+// s.add("7")
+//
+// s.searchNodeAt("3")

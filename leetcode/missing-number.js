@@ -8,3 +8,12 @@ var missingNumber = function(nums) {
 	return nums.length * (nums.length + 1) / 2 - result
 	//summation formula
 }
+
+
+let missingNumber = function(nums) {
+  var result = 0; 
+  for(var i = 0; i < nums.length; i++) {
+    result += nums[i]
+  }
+  return nums.length * (nums.length + 1) / 2 - result
+}
