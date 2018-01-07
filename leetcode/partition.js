@@ -1,15 +1,17 @@
 let arrayPairSum = (nums) => {
-  let sum = 0
-  nums.sort()
-  for(var i = 0; i < nums.length; i++) {
-    let curr = nums[i]
-    let next = i++
-    sum += Math.min(nums[i], nums[next])
-  }
-  return sum
+   nums.sort((a, b) => {
+    return a - b
+   })
+    var result = 0;
+    let sum = 0
+    for (var i = 0; i < nums.length; i += 2 ) {
+      console.log("i is ", i)
+      result += nums[i]
+    }
+    return result;
 }
 
 //runtime for best and average of sort:
 // O(n log(n)) and worst is O(n)
 
-arrayPairSum([6214, -2290, 2833, -7908])
+arrayPairSum([11, 41, -9046, 2047, 1118, 8477, 8446, 279, 4925, 7380, -1719, 3855])

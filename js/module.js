@@ -17,7 +17,6 @@ var myModule = {
   updateMyConfig: (newConfig) => {
     if(typeof newConfig === 'object') {
       this.myConfig = newConfig;
-      console.log(this.myConfig.language)
     }
   }
 

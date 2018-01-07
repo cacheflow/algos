@@ -505,7 +505,7 @@ s.add("1")
 s.add("2")
 s.add("3")
 
-console.log(s.remove('2'))
+s.remove('2')
 
 // let s = new CircularDoublyLinkedList()
 //

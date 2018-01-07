@@ -32,7 +32,6 @@ function toRoman(num) {
   ]
 
   for(var i = 0; i < romans.length; i++) {
-    console.log("num is ", num)
     while(num > num % romans[i].value) {
       result += romans[i].letter
       num -= romans[i].value

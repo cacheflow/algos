@@ -1,4 +1,4 @@
-var revereWords = function(s) {
+var reverseWords = function(s) {
     var sLength = s.length
     var sToArr = s.split('')
     var begin = 0;
