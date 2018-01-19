@@ -20,10 +20,25 @@ class Stack {
     }
   }
 
+  peek() {
+    if(this.index) {
+      let curr = this.data[this.index]
+      return curr
+    }
+    else {
+      throw new Error("No data to peek")
+    }
+  }
+
   isEmpty() {
     return this.index === 0
   }
+
+  list() {
+    return Object.keys(this.data).map(k => this.data[k])
+  }
 }
+let validParens = (left, right) => (left == '[' && right == ']') || (left == '{' && right == '}') || (left == '(' && right == ')')
 
 var isValid = function(s) {
   if(s.length % 2 == 1) {
@@ -35,19 +50,20 @@ var isValid = function(s) {
   let sArr = s.split('')
   let len = sArr.length
   let stack = new Stack()
-  for(let i = 0; i < len; i++) {
-    if(sArr[i] == '(') {
-      stack.push(')')
+  let copy = stack
+
+  for(var i = 0; i < len; i++) {
+    if( sArr[i] == '{' || sArr[i] == '[' || sArr[i] == '(') {
+      stack.push(sArr[i])
     }
-    else if(sArr[i] == '{') {
-      stack.push('}')
-    }
-    else if(sArr[i] == '[') {
-      stack.push(']')
-    }
-    else if(stack.isEmpty() || stack.pop() != sArr[i]) {
-      return false
+    else {
+      if( !stack.isEmpty() && validParens(stack.peek(), sArr[i]) ) {
+        stack.pop()
+      }
     }
   }
   return stack.isEmpty()
 };
+
+
+console.log(isValid("[()]"))
