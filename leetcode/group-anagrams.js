@@ -1,5 +1,4 @@
 var groupAnagrams = function(strs) {
-  let str = strs.join(' ')
   let obj = {}
   if(strs == null || strs.length == 0) {
     return []
@@ -15,7 +14,7 @@ var groupAnagrams = function(strs) {
       obj[sorted].push(str)
     }
   }
-  let len = Object.keys(obj).length
+  return Object.keys(obj).reverse().map(k => obj[k])
 };
 
 
@@ -23,3 +22,8 @@ let strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
 
 
 groupAnagrams(strs)
+
+
+//Time complexity is O(N K log(k))
+//where n is the length of the array and k is the length of each string
+//and log(k) is the sorting operation and outer loop has O(N).
