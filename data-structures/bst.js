@@ -1,75 +1,53 @@
-class Bst {
-  constructor(value) {
-    this.value = value
-    this.right = null 
+class Node {
+  constructor(val) {
+    this.val = val
     this.left = null
+    this.right = null
+  }
+}
+class Bst {
+  constructor() {
+    this.root = null
   }
 
-  insert(value) {
-    if(value <= this.value) {
-      if(!this.left) this.left = new BST(value)
-      else this.left.insert(value)
+  insert(val) {
+    let root = this.root
+    if(!root) {
+      this.root = new Node(val)
+      return;
     }
-    else if(value > this.value) {
-      if(!this.right) {
-        this.right = new BST(value)
+
+    let currentNode = root
+
+    if(currentNode.val <= newNode.val) {
+      if(!currentNode.left) {
+        currentNode.left = new Node(val)
       }
       else {
-        this.right.insert(value)
+        currentNode.insert(newNode)
+      }
+    }
+    else if(val > currentNode.val) {
+      if(!currentNode.right) {
+        currentNode.right = new Node(val)
+      }
+      else {
+        currentNode.insert(val)
       }
     }
   }
 
-  contains(value) {
-    if(this.value === value) return true
-    if(value < this.value) {
-      if(!this.left) return false 
-      else return this.left.contains(value)
-    }
-    else if(value > this.value) {
-      if(!this.right) return false 
-      else return this.right.contains(value)
-    }
-  }
 
-  depthFirstSearch(iteratorFunc, order) {
-    if(this.order == 'pre-order') iteratorFunc(this.value)
-    if(this.left) this.left.depthFirstSearch(iteratorFunc, order)
-    if(order == 'in-order') iteratorFunc(this.value)
-    if(this.right) this.right.depthFirstSearch(iteratorFunc, order)
-    if(order == 'post-order') iteratorFunc(this.value)
-  }
-
-  breadthFirstTraversal (iteratorFunc) {
-    let queue = [this]
-
-    while(queue.length) {
-      let treeNode = queue.shift()
-      iteratorFunc(treeNode)
-
-      if(treeNode.left) queue.push(treeNode.left)
-      if(treeNode.right) queue.push(treeNode.right)
-    }
-  }
-
-  getMinVal() {
-    if(!this.left) {
-      return this.value
-    }
-    else {
-      return this.left.getMinVal()
-    }
-  }
-
-  getMaxVal() {
-    if(!this.right) {
-      return this.value
-    }
-    else {
-      return this.right.getMaxVal()
-    }
+  print() {
+    return this.root
   }
 }
 
-let b = new Bst("wow")
-
+let b = new Bst()
+let i = 0
+while(i < 10) {
+  b.push(i)
+  i++
+}
+//https://hackernoon.com/data-structures-in-javascript-pt-1-binary-search-trees-2c231cf2c8e1
+//https://initjs.org/implement-a-binary-search-tree-in-javascript-952a44ee7c26
