@@ -1,42 +1,37 @@
 class Node {
-  constructor(val) {
-    this.val = val
+  constructor(data) {
     this.left = null
     this.right = null
+    this.val = data
   }
 }
+
 class Bst {
   constructor() {
     this.root = null
   }
 
-  insert(val) {
-    let root = this.root
-    if(!root) {
+  insert(val, node = this.root) {
+    let currentNode = node
+    if(!currentNode) {
       this.root = new Node(val)
-      return;
+      return
     }
-
-    let currentNode = root
-
-    if(currentNode.val <= newNode.val) {
+    if(val > currentNode.val) {
       if(!currentNode.left) {
         currentNode.left = new Node(val)
+        return
       }
-      else {
-        currentNode.insert(newNode)
-      }
+      this.insert(val, currentNode.left)
     }
-    else if(val > currentNode.val) {
+    else {
       if(!currentNode.right) {
         currentNode.right = new Node(val)
+        return
       }
-      else {
-        currentNode.insert(val)
-      }
+      this.insert(val, currentNode.right)
     }
   }
-
 
   print() {
     return this.root
@@ -44,10 +39,19 @@ class Bst {
 }
 
 let b = new Bst()
-let i = 0
-while(i < 10) {
-  b.push(i)
-  i++
+// let i = 0
+// while(i < 10) {
+//   b.insert(i)
+//   i++
+// }
+
+let j = 500;
+
+while(j > 100) {
+  b.insert(j)
+  j--
 }
+
+console.log(b.print())
 //https://hackernoon.com/data-structures-in-javascript-pt-1-binary-search-trees-2c231cf2c8e1
 //https://initjs.org/implement-a-binary-search-tree-in-javascript-952a44ee7c26

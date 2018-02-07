@@ -1,0 +1,1 @@
+const collectInto = fn => (...args) => fn(args)
