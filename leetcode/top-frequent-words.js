@@ -14,7 +14,6 @@ var topKFrequent = function(words, k) {
     let frequenciesMatch = (firstWordFrequency === secondWordFrequency)
     let firstLetterlength = a[0]
     let secondLetterLength = b[0]
-
     if(b[1] > a[1]) {
       return 1;
     }
@@ -31,35 +30,23 @@ var topKFrequent = function(words, k) {
     }
     return 0
   })
-  let arr = []
-  for(var i = 0; i < sortedByFreq.length; i++) {
-    if(arr.length !== k) {
-      arr.push(sortedByFreq[i][0])
-    }
-  }
-  return arr
+  let newArr = sortedByFreq.slice(0, k)
+  return newArr.map(a => a[0])
 
 };
 
-console.log(topKFrequent(["i",
-"love",
-"leetcode",
-"i",
-"love",
-"coding"], 2))
-
-let test1 = ["indbvb","oic","sviavwoxss","bwowfvira","ledleb","rxgw","jlmetsplg","bxlr","dmhuq","hnnftqf","wnfbo","cub","ckqqibnx","ous","abxvhyehv","rmrypv","zgsedk","hfhlfqzkcn","amarxpg","zddeno","zfkgsudxq","alkq","bgfvfa","ehd","ptk","hdmvplne","ypzfk","ouy","bxjxpfp","rlmdt","fwxulnpit","ijww","jdbgvc","jlgfgwb","ppn","nmclxk","mgqj","gucayxp","jxkvrmajri","bklij","oldainprua"]
-let test2 = ["indbvb","oic","sviavwoxss","bwowfvira","jlmetsplg","ledleb","rxgw","bxlr","dmhuq","hnnftqf","wnfbo","ckqqibnx","cub","ous","abxvhyehv","rmrypv","zgsedk","amarxpg","hfhlfqzkcn","zddeno","zfkgsudxq","alkq","bgfvfa","ehd","ptk","bxjxpfp","hdmvplne","ouy","rlmdt","ypzfk","fwxulnpit","ijww","jdbgvc","jlgfgwb","ppn","bklij","gucayxp","jxkvrmajri","mgqj","nmclxk","oldainprua"]
+let output = ["indbvb","oic","sviavwoxss","bwowfvira","ledleb","rxgw","jlmetsplg","bxlr","dmhuq","hnnftqf","wnfbo","cub","ckqqibnx","ous","abxvhyehv","rmrypv","zgsedk","hfhlfqzkcn","amarxpg","zddeno","zfkgsudxq","alkq","bgfvfa","ehd","ptk","hdmvplne","ypzfk","ouy","bxjxpfp","rlmdt","fwxulnpit","ijww","jdbgvc","jlgfgwb","ppn","nmclxk","mgqj","gucayxp","jxkvrmajri","bklij","oldainprua"]
+let expected = ["indbvb","oic","sviavwoxss","bwowfvira","jlmetsplg","ledleb","rxgw","bxlr","dmhuq","hnnftqf","wnfbo","ckqqibnx","cub","ous","abxvhyehv","rmrypv","zgsedk","amarxpg","hfhlfqzkcn","zddeno","zfkgsudxq","alkq","bgfvfa","ehd","ptk","bxjxpfp","hdmvplne","ouy","rlmdt","ypzfk","fwxulnpit","ijww","jdbgvc","jlgfgwb","ppn","bklij","gucayxp","jxkvrmajri","mgqj","nmclxk","oldainprua"]
 
 let i = 0
-let diff = []
-
-while(test1.length >= i && test2.length >= i) {
-  if(test1[i] != test2[i]) {
-    diff.push("first array is different at ", i, " with word ", test1[i])
+let str = ""
+while(i < output.length) {
+  if(output[i] != expected[i]) {
+    str += ` \nExpected ${expected[i]} but got ${output[i]} at ${i} \n`
   }
-  console.log(test1[i] === test2[i])
   i++
 }
-
-console.log(diff)
+let arr = ["rmrypv","zgsedk","jlmetsplg","wnfbo","hnnftqf","bxlr","sviavwoxss","jdbgvc","zddeno","rxgw","hnnftqf","hdmvplne","rlmdt","jlmetsplg","ous","rmrypv","fwxulnpit","dmhuq","rxgw","ledleb","bxlr","indbvb","ckqqibnx","cub","ijww","ehd","hfhlfqzkcn","sviavwoxss","rxgw","bxjxpfp","mgqj","oic","ptk","fwxulnpit","ijww","sviavwoxss","bgfvfa","zfkgsudxq","alkq","dmhuq","zddeno","rxgw","zgsedk","amarxpg","bgfvfa","wnfbo","sviavwoxss","sviavwoxss","alkq","nmclxk","zgsedk","bwowfvira","ous","bxlr","zddeno","rxgw","ous","wnfbo","rmrypv","sviavwoxss","ehd","zgsedk","jlmetsplg","abxvhyehv","ledleb","wnfbo","bgfvfa","bwowfvira","amarxpg","wnfbo","bwowfvira","dmhuq","ouy","bxlr","rxgw","oic","hnnftqf","ledleb","rlmdt","oldainprua","ous","ckqqibnx","dmhuq","hnnftqf","oic","jlmetsplg","ppn","amarxpg","jlgfgwb","bxlr","bwowfvira","hdmvplne","oic","ledleb","bwowfvira","oic","ptk","dmhuq","abxvhyehv","ckqqibnx","indbvb","ypzfk","rmrypv","bxjxpfp","amarxpg","dmhuq","sviavwoxss","bwowfvira","zfkgsudxq","wnfbo","rxgw","jxkvrmajri","cub","abxvhyehv","bwowfvira","indbvb","ehd","ckqqibnx","oic","ptk","hnnftqf","ouy","oic","zgsedk","abxvhyehv","ypzfk","ptk","sviavwoxss","rmrypv","oic","ous","abxvhyehv","hnnftqf","hfhlfqzkcn","ledleb","cub","ppn","zddeno","indbvb","oic","jlmetsplg","ouy","bwowfvira","bklij","gucayxp","zfkgsudxq","hfhlfqzkcn","zddeno","ledleb","zfkgsudxq","hnnftqf","bgfvfa","jlmetsplg","indbvb","ehd","wnfbo","hnnftqf","rlmdt","bxlr","indbvb","jdbgvc","jlmetsplg","cub","jlgfgwb","ypzfk","indbvb","dmhuq","jlmetsplg","zgsedk","rmrypv","cub","rxgw","ledleb","rxgw","sviavwoxss","ckqqibnx","hdmvplne","dmhuq","wnfbo","jlmetsplg","bxlr","zfkgsudxq","bxjxpfp","ledleb","indbvb","ckqqibnx","ous","ckqqibnx","cub","ous","abxvhyehv","bxlr","hfhlfqzkcn","hfhlfqzkcn","oic","ten","amarxpg","indbvb","cub","alkq","alkq","sviavwoxss","indbvb","bwowfvira","ledleb"]
+console.log(str)
+// console.log(output.length == expected.length)
+topKFrequent(arr, 41)
