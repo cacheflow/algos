@@ -2,7 +2,6 @@ var containsNearbyDuplicate = function(nums, k) {
  let map = new Map()
  for(var i = 0; i < nums.length; i++) {
    if(map.has(nums[i]) && (i - map.get(nums[i])) <= k) {
-     console.log("difference is ", i - map.get(nums[i]))
      return true
    }
    map.set(nums[i], i)

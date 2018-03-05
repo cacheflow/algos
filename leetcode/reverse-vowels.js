@@ -1,18 +1,51 @@
+class Stack {
+  constructor() {
+    this.data = {}
+    this.index = 0
+  }
+
+  push(data) {
+    this.data[++this.index] = data
+  }
+
+  pop() {
+    let {index} = this
+    if(this.index > 0) {
+      let cachedData = this.data[index]
+      delete this.data[this.index]
+      --this.index
+      return cachedData
+    }
+    else {
+      throw new Error("Nothing to pop off.")
+    }
+  }
+
+  peek() {
+    return this.data
+  }
+
+  empty() {
+    return Object.keys(this.data).length === 0
+  }
+}
+
+
 var reverseVowels = function(s) {
-  var firstIndex = -1
-  var lastIndex = -1
-  var obj = {}
+  let stack = new Stack()
   s = s.split('')
   for(var i = 0; i < s.length; i++) {
-    var next = i == s.length - 1 ? 0 : i + 1
-    var currentLetter = s[i]
-    var nextLetter = s[next]
+    let currentLetter = s[i]
     if(currentLetter == 'a' || currentLetter == 'e' || currentLetter == 'i' || currentLetter == 'o' || currentLetter == 'u') {
-      if(i > firstIndex) {
-        firstIndex = i
+      if(stack.empty()) {
+        stack.push(currentLetter)
+      }
+      else {
+        s[i] = stack.pop()
       }
     }
   }
+  console.log(s)
 };
 
 reverseVowels('hello')
