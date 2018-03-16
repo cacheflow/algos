@@ -9,43 +9,53 @@ class Stack {
   }
 
   pop() {
-    let {index} = this
-    if(this.index > 0) {
-      let cachedData = this.data[index]
+    if(this.index) {
+      let deletedData = this.data[this.index]
       delete this.data[this.index]
       --this.index
-      return cachedData
+      return deletedData
     }
-    else {
-      throw new Error("Nothing to pop off.")
-    }
+    throw new Error("Nothing to pop off")
   }
 
   peek() {
+    return this.data[this.index]
+  }
+
+  toJson() {
     return this.data
   }
 
   empty() {
-    return Object.keys(this.data).length === 0
+    return this.index === 0
   }
 }
 
 
-var reverseVowels = function(s) {
-  let stack = new Stack()
-  s = s.split('')
-  for(var i = 0; i < s.length; i++) {
-    let currentLetter = s[i]
-    if(currentLetter == 'a' || currentLetter == 'e' || currentLetter == 'i' || currentLetter == 'o' || currentLetter == 'u') {
-      if(stack.empty()) {
-        stack.push(currentLetter)
-      }
-      else {
-        s[i] = stack.pop()
-      }
-    }
-  }
-  console.log(s)
-};
 
-reverseVowels('hello')
+
+
+let reverseVowels = (s) => {
+  let arr = s.split('')
+  let isVowel = (l) => l === 'a' || l === 'A' || l === 'e' || l === 'E' || l === 'I' || l === 'i' || l === 'o' || l === 'O' || l === 'u' || l === 'U'
+  let start = 0
+  let end = arr.length - 1
+  while(start <= end) {
+    let firstChar = arr[start]
+    let lastChar = arr[end]
+    while(start < end && isVowel(firstChar) ) {
+      start++
+    }
+    while(start < end && isVowel(lastChar) ) {
+      end--
+    }
+    let temp = arr[start]
+    arr[start] = arr[end]
+    arr[end] = temp
+    start++
+    end--
+  }
+  return arr.join('')
+}
+
+console.log(reverseVowels("Leetcode"))
