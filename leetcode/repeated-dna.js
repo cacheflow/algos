@@ -2,7 +2,7 @@ var findRepeatedDnaSequences = function(s) {
     let arr = s.split('')
     let newArr = []
     if(s.length < 10) {
-      return s
+      return "  "
     }
     for(let i = 0; i < 10; i++) {
       newArr.push(arr[i])

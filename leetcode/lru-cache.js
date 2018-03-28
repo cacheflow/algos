@@ -14,7 +14,7 @@ class LruCache {
   }
 
   put(k, v) {
-    if(this.size === Object.keys(this.data).length) {
+    if(this.size === Object.keys(this.data).length  ) {
       delete this.data[this.lastUsed]
     }
     this.lastUsed = k

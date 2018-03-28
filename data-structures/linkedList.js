@@ -84,7 +84,7 @@ class DoublyLinkedList {
   add(data) {
     let tail = this.tail
     let head = this.head
-    let length = this.legnth
+    let length = this.length
     let newNode = new DoublyNode(data)
 
     if(this.length) {
@@ -515,3 +515,5 @@ s.remove('2')
 // s.add("7")
 //
 // s.searchNodeAt("3")
+
+module.exports = SinglyLinkedList
