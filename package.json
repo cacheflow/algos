@@ -16,5 +16,8 @@
     "url": "https://github.com/cacheflow/algos/issues"
   },
   "homepage": "https://github.com/cacheflow/algos#readme",
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.26.0"
+  }
 }

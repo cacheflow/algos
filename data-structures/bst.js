@@ -1,8 +1,8 @@
 class Node {
-  constructor(data) {
-    this.left = null
+  constructor(val) {
     this.right = null
-    this.val = data
+    this.left = null
+    this.val = val
   }
 }
 
@@ -11,26 +11,42 @@ class Bst {
     this.root = null
   }
 
-  insert(val, node = this.root) {
-    let currentNode = node
+  insert(val, currentNode = this.root) {
     if(!currentNode) {
       this.root = new Node(val)
-      return
+      return;
     }
-    if(val > currentNode.val) {
+    if(currentNode.val > val) {
       if(!currentNode.left) {
         currentNode.left = new Node(val)
-        return
+        return;
       }
       this.insert(val, currentNode.left)
     }
     else {
       if(!currentNode.right) {
         currentNode.right = new Node(val)
-        return
+        return;
       }
       this.insert(val, currentNode.right)
     }
+  }
+
+  contains(val) {
+    let exists = false
+    const recurse = (node) => {
+      if(node.val === val) {
+        exists = true
+      }
+      else if(node.left !== null && val < node.val) {
+        recurse(node.left)
+      }
+      else if(node.right !== null && val > node.val) {
+        recurse(node.right)
+      }
+    }
+    recurse(this.root)
+    return exists
   }
 
   print() {
@@ -39,19 +55,9 @@ class Bst {
 }
 
 let b = new Bst()
-// let i = 0
-// while(i < 10) {
-//   b.insert(i)
-//   i++
-// }
 
-let j = 500;
-
-while(j > 100) {
-  b.insert(j)
-  j--
+for(var i = 0; i < 10; i++) {
+  b.insert(i)
 }
 
-console.log(b.print())
-//https://hackernoon.com/data-structures-in-javascript-pt-1-binary-search-trees-2c231cf2c8e1
-//https://initjs.org/implement-a-binary-search-tree-in-javascript-952a44ee7c26
+console.log(b.contains(2))

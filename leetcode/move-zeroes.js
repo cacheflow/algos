@@ -1,15 +1,23 @@
 var moveZeroes = function(nums) {
-  var len = nums.length
-  var nonZeroIndex = 0;
-  for(var i = 0; i < len; i++) {
+  let count = 0;
+  let numOfZeroes = 0;
+  for(var i = 0; i < nums.length; i++) {
     if(nums[i] !== 0) {
-      nums[nonZeroIndex++] = nums[i]
+      nums[count++] = nums[i]
+    }
+    if(nums[i] === 0) {
+      numOfZeroes++
     }
   }
-  for(var j = nonZeroIndex; j < len; j++) {
-    nums[j] = 0
+  for(; count < nums.length; count++) {
+    nums.splice(count)
   }
+  while(numOfZeroes !== 0) {
+    nums.push(0)
+    numOfZeroes--
+  }
+  return nums
 };
 
-var nums = [0, 1, 3, 0, 0, 0, 10, 3, 12, 6, 9]
+var nums = [0,1,0,3,12]
 moveZeroes(nums)
