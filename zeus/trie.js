@@ -27,10 +27,12 @@ class Trie {
     }
     else if(!node.children.has(word[0])){
       node.children.set(word[0], new Node())
-      this.add(word.substr(1), node.children.get(word[0]))
+      let previousLetterOfWord = node.children.get(word[0]
+      this.add(word.substr(1), previousLetterOfWord]))
     }
     else {
-      this.add(word.substr(1), node.children.get(word[0]))
+      let previousLetterOfWord = node.children.get(word[0]
+      this.add(word.substr(1), previousLetterOfWord))
     }
   }
 
