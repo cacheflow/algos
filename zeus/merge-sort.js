@@ -26,6 +26,8 @@ function merge(left, right) {
       indexRight++
     }
   }
+  console.log("indexLeft ", indexLeft)
+  console.log("indexRight ", indexRight)
   return result.concat(left.slice(indexLeft)).concat(right.slice(indexRight))
 }
 
@@ -33,4 +35,4 @@ const list = [2, 5, 1, 3, 7, 2, 3, 8, 6, 3]
 
 
 
-console.log(mergeSort(list))
+console.table(mergeSort(list))

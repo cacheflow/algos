@@ -5,17 +5,17 @@ const simplifyPath = (absolutePath) => {
   let i = 0;
   let len = sections.length - 1
   while(i <= len) {
-    if(sections[i] === '..') {
+    let hasPeriods = sections[i] === '..'
+    if(hasPeriods) {
       if(res.length > 0) {
         res.pop()
       }
     }
-    if(sections[i] !== '.' && sections[i].length > 0 && sections[i] != '..') {
+    if(sections[i] !== '.' && sections[i].length > 0 && !hasPeriods) {
       res.push(sections[i])
     }
     i++
   }
-
   if(res.length > 0) {
     while(res.length != 0) {
       newStr = "/" + res.pop() + newStr
@@ -42,4 +42,4 @@ const simplifyPath = (absolutePath) => {
 //
 // Now insert all the directory to a string and as it is stack, we should save the new directory name at the front.
 
-simplifyPath("./home/")
+simplifyPath("/../")

@@ -27,12 +27,12 @@ class Trie {
     }
     else if(!node.children.has(word[0])){
       node.children.set(word[0], new Node())
-      let previousLetterOfWord = node.children.get(word[0]
-      this.add(word.substr(1), previousLetterOfWord]))
+      let previousLetterOfWord = node.children.get(word[0])
+      this.add(word.substr(1), previousLetterOfWord)
     }
     else {
-      let previousLetterOfWord = node.children.get(word[0]
-      this.add(word.substr(1), previousLetterOfWord))
+      let previousLetterOfWord = node.children.get(word[0])
+      this.add(word.substr(1), previousLetterOfWord)
     }
   }
 
@@ -40,11 +40,26 @@ class Trie {
     return this.collectAllWords(this.root, "", []);
   }
 
+  predictWord(str, node = this.root) {
+    let predictions = [];
+    let newStr = str
+    let getMatchingWords = (prefix, newStr, n) => {
+      if(n.children.has(prefix[0])) {
+        let w = n.children.get(prefix[0])
+        for(let letter of w.children.keys()) {
+          console.log('new str is ', letter)
+          getMatchingWords(letter, newStr.concat(letter), w)
+        }
+      }
+    }
+    console.log(predictions)
+    return getMatchingWords(str, '', node)
+  }
+
   search(word) {
     let arr = []
     let recurse = (node, str) => {
       if(node.isEnd()) {
-        console.log("heloo")
         arr.push(str)
       }
       if(node.children.has(word[0])) {
@@ -70,6 +85,7 @@ class Trie {
         arr.push(str)
       }
       else {
+        //pushes all prefixes to the array
         str.length > 0 ? arr.push(str) : undefined;
         return;
       };
@@ -86,9 +102,11 @@ let t = new Trie()
 t.add('cat')
 
 t.add('dog')
+t.add('dime')
 
 t.add('intelligence')
-t.search('cat')
+
+console.log(t.predictWord('do'))
 
 
 // console.log(t.root.children.get('i'))

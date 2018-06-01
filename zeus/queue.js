@@ -6,15 +6,18 @@ class Queue {
   }
 
   enqueue(data) {
-    if(data) {
-      this.data[this.internalIndex++] = data
+    const {internalIndex} = this;
+    if(data != undefined || data != null) {
+      this.data[internalIndex] = data
+      this.internalIndex++
     }
   }
 
-  dequeue(){
-    if(this.internalIndex !== this.externalIndex) {
-      let deletedData = this.data[this.externalIndex]
-      delete this.data[this.externalIndex]
+  dequeue() {
+    const {internalIndex, externalIndex} = this
+    if(internalIndex !== externalIndex) {
+      let deletedData = this.data[externalIndex]
+      delete this.data[externalIndex]
       ++this.externalIndex
       return deletedData
     }
@@ -24,14 +27,11 @@ class Queue {
   }
 }
 
-
 let q = new Queue()
 
-q.enqueue("a")
-q.enqueue("b")
-q.enqueue("c")
+q.enqueue('wow')
+q.enqueue('dogs')
 
-console.log(q.dequeue())
 console.log(q.dequeue())
 console.log(q.dequeue())
 q.dequeue()
