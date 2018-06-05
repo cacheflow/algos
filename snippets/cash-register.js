@@ -1,6 +1,7 @@
 const makeChange = (amount) => {
   let sum = 0;
   let change = [25, 10, 5, 1];
+  amount = amount * 100
   let denominations = {
     25: 'quarters',
     10: 'dimes',
@@ -17,11 +18,11 @@ const makeChange = (amount) => {
     let reducedChange = Math.floor(amount / change[i])
     if(reducedChange >= 1) {
       let getDenom = denominations[change[i]]
-      totalNumOfEachCoin[getDenom]++
+      totalNumOfEachCoin[getDenom] = reducedChange
       amount -= reducedChange * change[i]
     }
   }
   return totalNumOfEachCoin
 }
 
-console.log(makeChange(11))
+makeChange(1.55)

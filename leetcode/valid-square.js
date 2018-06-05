@@ -8,20 +8,20 @@ var validSquare = function(p1, p2, p3, p4) {
       while(i <= len) {
         let leftSide = arguments[i].slice(0, Math.min(arguments[i].length / 2))
         let rightSide = arguments[i].slice(Math.max(arguments[i].length / 2, arguments[i].length - 1))
+        // console.log(arguments[i])
         leftSum += leftSide[0]
         rightSum += rightSide[0]
         i++
       }
-      console.log(leftSum, rightSum)
-      return leftSum === rightSum
+      return leftSum > 0 && rightSum 
     }
     else {
       return false
     }
 };
 
-validSquare([6987,-473],
-[6985,-473],
-[6986,-472],
-[6986,-474],
+validSquare([0,0],
+[1,1],
+[1,0],
+[0,1],
 )
