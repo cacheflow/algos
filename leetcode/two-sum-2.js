@@ -1,9 +1,17 @@
 var twoSum = function(numbers, target) {
-  var obj = {};
-  for(var i = 0; i < numbers.length; i++) {
-    obj[target - numbers[i]] = i;
+  let low = 0;
+  let high = numbers.length - 1;
+  while(low < high) {
+    let sum = numbers[low] + numbers[high]
+    if(sum === target) {
+      return [low + 1, high + 1]
+    }
+    else if(sum < target) {
+      low++
+    }
+    else {
+      high--
+    }
   }
-  console.log(obj)
+  return [-1, -1]
 };
-
-twoSum([2,3,4], 6)

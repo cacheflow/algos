@@ -19,8 +19,6 @@ let cachedL2 = l2
 while(l1.next != null && l2.next != null) {
   let L1Next = l1.next.next
   let L2Next = l2.next.next
-  console.log(L1Next, L2Next)
-  console.log(l1.data, l2.data)
   l1 = l1.next
   l2 = l2.next
 }
