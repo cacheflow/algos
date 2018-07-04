@@ -1,37 +1,42 @@
-var findAnagrams = function(s, p) {
-  let len = p.length; 
-  let map = {}; 
-  let result = []; 
-  let slideWindow = {};
-
-  for(let i = 0; i < p.length; i++) {
-    map[p[i]] = map[p[i]] ? map[p[i]] + 1 : 1; 
+var findAllAnagrams = function(s, p) {
+  let arr = []
+  if(s === null || s.length === 0 || p == null || p.length === 0) {
+    return arr; 
+  }
+  let letters = p.split('')
+  let h = {}
+  //record each character in p to hash
+  for(let i = 0; i < letters.length; i++) {
+    if(letters[i] in h) {
+      h[letters[i]++]
+    }
+    else {
+      h[letters[i]] = 1
+    }
   }
   let left = 0; 
   let right = 0; 
-
-  // p is the anagram we're looking for in s. 
-  // s is the group of letters we're looking for in p. 
-  
-  while(right < s.length) {
-    let currentLetter = s.charAt(right)
-    if(currentLetter in map) {
-      if(slideWindow[currentLetter] && map[currentLetter] === 1) {
-        left = Math.max(slideWindow[currentLetter], left)
-      } 
-      if(right - left + 1 === p.length) {
-        result.push(left);
-        left++
-      }
-    }else {
-      left = right + 1; 
-      slideWindow = {};
+  let count = p.length;
+  let list = [];
+  for(let i = 0; i < p.length; i++) {
+    let val = h[s[i]]
+    let k = h[s]
+    if(h[s[i]] !== undefined && h[s[i]]-- >= 0) {
+      count--
     }
-    slideWindow[currentLetter] = right + 1; 
-    right++
   }
-  console.log(result)
-  return result
+
+  for(let i = 0; i < s.length - p.length + 1; i++) {
+    if(count == 0) {
+      list.push(i)
+    }
+    if(h[s[i]] !== undefined && h[s[i]]++ >= 0) {
+      count++
+    }
+    if(h[s[i+p.length]] != undefined && h[s[i+p.length]]-- > 0) {
+      count--
+    } 
+  }
 }
 
-findAnagrams("cbaebabacd", "abc")
+findAllAnagrams("cbaebabacd", "abc")
