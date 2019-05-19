@@ -9,3 +9,5 @@ const memoize = (f) => (...args) => {
 const addNum = memoize(x => x + x)
 
 console.log(addNum(4))
+addNum(5)
+addNum(4)
