@@ -30,7 +30,7 @@ var lengthOfLongestSubstring = function (s) {
           // console.log('set has ', strSet.entries())
           // console.log("left is ", curr, left)
           // console.log("right is ", char, right)
-          // console.log("curr is ", curr)
+          // console.log("curr is ", curr)    
           // console.log("char is ", char)
           console.log('going to delete ', curr)
           console.log("char is ", char)

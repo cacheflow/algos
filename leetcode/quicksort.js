@@ -1,6 +1,6 @@
-const nums = [1, 5, 3, 2, 4];
+const arr = [9, 2, 5, 6, 4, 3, 7, 10, 1, 12, 8, 11];
 
-const quickSort = (arr) => {
+function quickSort(arr) {
   if(!arr || !Array.isArray(arr)) {
     return [];
   }
@@ -10,15 +10,28 @@ const quickSort = (arr) => {
   let left = [];
   let right = [];
   let pivot = arr[0];
+
   for(var i = 1; i < arr.length; i++) {
-    if(pivot > arr[i]) {
+    if(arr[i] < pivot) {
       left.push(arr[i])
     }
     else {
       right.push(arr[i])
     }
   }
-  return [...quickSort(left), pivot, ...quickSort(right)];
+  return [
+    ...quickSort(left),
+    pivot,
+    ...quickSort(right)
+  ]
 }
 
-console.log(quickSort(nums))
+let res = arr.slice().sort((a, b) => {
+  return a - b
+})
+
+const qs = quickSort(arr);
+
+console.log(res.every((el, index) => {
+  return el === qs[index]
+}))
